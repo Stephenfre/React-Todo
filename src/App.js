@@ -2,11 +2,29 @@ import React from "react";
 import TodoList from "./components/TodoComponents/TodoList.js";
 import TodoForm from "./components/TodoComponents/TodoForm.js";
 import "./styles.css";
+import styled from "styled-components";
+
+const ContainerStyle = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const FormContainer = styled.div`
+  width: 70%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const data = [
   {
-    task: "",
-    id: "",
+    task: "Clean Room",
+    id: "1",
     completed: false
   }
 ];
@@ -68,17 +86,17 @@ class App extends React.Component {
   render() {
     console.log("rendering...");
     return (
-      <div className="Container">
-        <div className="todo-form">
-          <h1>todo list</h1>
+      <ContainerStyle className="Container">
+        <FormContainer className="todo-form">
+          <h1>My Todo List</h1>
           <TodoForm addItem={this.addItem} />
-        </div>
+        </FormContainer>
         <TodoList
           todo={this.state.todo}
           toggleCompleted={this.toggleCompleted}
           clearCompleted={this.clearCompleted}
         />
-      </div>
+      </ContainerStyle>
     );
   }
 }
